@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShipBuilder 
+public interface IShipBuilder 
 {
 
-    private Ship SpaceCraft
-    {
-        get { return SpaceCraft; }
-    }
-    public abstract void BuildbodyPart();
- 
+    protected  abstract void BuildbodyPart();
 
-    public abstract void BuildFrontPart();
 
-    public abstract void BuildMissilePart();
+    protected abstract void BuildFrontPart();
 
-    public abstract void BuildReactorPart(); 
+    protected abstract void BuildMissilePart();
+
+    protected abstract void BuildReactorPart(); 
 
     
 }

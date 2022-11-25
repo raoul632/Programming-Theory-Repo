@@ -6,41 +6,42 @@ public class FighterShip : Ship
 {
     protected override void BuildbodyPart()
     {
-        shipBuild.Add(Scenemanager.Instance.brocanteur.GetpartShip("ModuleCorps"));
+        
+        shipBuild.Add(Instantiate(Scenemanager.Instance.brocanteur.GetpartShip("ModuleCorps"), gameObject.transform));
     }
 
     protected override void BuildFrontPart()
     {
-        shipBuild.Add(Scenemanager.Instance.brocanteur.GetpartShip("ModuleCoc"));
+        shipBuild.Add(Instantiate(Scenemanager.Instance.brocanteur.GetpartShip("ModuleCoc"), gameObject.transform));
     }
 
     protected override void BuildMissilePart()
     {
-        shipBuild.Add(Scenemanager.Instance.brocanteur.GetpartShip("ModuleMissile"));
+        shipBuild.Add(Instantiate(Scenemanager.Instance.brocanteur.GetpartShip("ModuleMissile"), gameObject.transform));
     }
 
     protected override void BuildReactorPart()
     {
-        shipBuild.Add(Scenemanager.Instance.brocanteur.GetpartShip("ModulePropulseur1"));
+        shipBuild.Add(Instantiate(Scenemanager.Instance.brocanteur.GetpartShip("ModulePropulseur1"), gameObject.transform));
     }
 
     public override void BuildShip()
     {
+        shipBuild = new List<GameObject>();
         BuildbodyPart();
         BuildFrontPart();
         BuildMissilePart();
         BuildReactorPart();
-        foreach (GameObject go in shipBuild)
-        {
-            Instantiate(go);
-        }
+       
     }
 
     public override void DestroyShip()
     {
-        foreach (GameObject go in shipBuild)
+        for (int i = shipBuild.Count - 1; i > -1; --i)
         {
-            Destroy(go);
+            Destroy(shipBuild[i]);
+            shipBuild.RemoveAt(i);
         }
+        shipBuild.Clear();
     }
 }

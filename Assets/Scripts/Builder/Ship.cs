@@ -6,7 +6,7 @@ public abstract class Ship : MonoBehaviour, IShipBuilder
 {
     private string shipType;
    
-    protected List< GameObject> shipBuild = new List< GameObject>();
+    protected List< GameObject> shipBuild;
     protected GameObject myShip; 
 
 

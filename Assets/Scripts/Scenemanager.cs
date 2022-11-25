@@ -51,7 +51,10 @@ public class Scenemanager : MonoBehaviour
       
         if(actualPrincipalObject != null)
         {
-            actualPrincipalObject.GetComponent<Ship>().DestroyShip(); 
+            foreach (Transform child in actualPrincipalObject.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
             Destroy(actualPrincipalObject); 
         }
         actualPrincipalObject = Instantiate(SlowlargeCargo);
@@ -65,7 +68,10 @@ public class Scenemanager : MonoBehaviour
      
         if (actualPrincipalObject != null)
         {
-           
+            foreach (Transform child in actualPrincipalObject.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
             Destroy(actualPrincipalObject);
         }
         actualPrincipalObject = Instantiate(SmallCargo);
@@ -79,7 +85,10 @@ public class Scenemanager : MonoBehaviour
       
         if (actualPrincipalObject != null)
         {
-            
+            foreach (Transform child in actualPrincipalObject.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
             Destroy(actualPrincipalObject);
         }
         actualPrincipalObject = Instantiate(FighterShip);
